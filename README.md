@@ -12,14 +12,13 @@ This repository contains the Puppet Module for installing and configuring WSO2 E
 - Puppet 2.7, 3 or newer
 
 ## How to Contribute
-Follow the steps mentioned in the [wiki](https://github.com/wso2/puppet-modules/wiki) to setup a development environment and update/create new puppet modules.
+Follow the steps mentioned in the [wiki](https://github.com/wso2/puppet-base/wiki) to setup a development environment and update/create new puppet modules.
 
 ## Add WSO2 Base Puppet Module
 
 Run the following commands to get wso2base submodule.
 
 `git submodule init`
-
 
 `git submodule update`
 
