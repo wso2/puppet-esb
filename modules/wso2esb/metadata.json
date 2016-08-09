@@ -1,0 +1,19 @@
+{
+  "name": "wso2-wso2esb",
+  "version": "2.1.0",
+  "author": "WSO2",
+  "license": "Apache-2.0",
+  "summary": "WSO2 Enterprise Service Bus Puppet module",
+  "source": "https://github.com/wso2/puppet-modules/tree/master/wso2esb",
+  "project_page": "http://wso2.com/products/enterprise-service-bus/",
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [ "12.04", "14.04" ]
+    }
+  ],
+  "tags" : ["wso2esb", "4.9.0"],
+  "dependencies": [
+    { "name": "wso2/wso2base", "version_requirement": "2.1.0" }
+  ]
+}
