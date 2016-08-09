@@ -25,13 +25,13 @@
     <fileSets>
         <!-- modules -->
         <fileSet>
-            <directory>${project.basedir}/modules/</directory>
-            <outputDirectory>${pom.artifactId}-${pom.version}/modules/</outputDirectory>
+            <directory>${project.basedir}/modules/wso2esb/</directory>
+            <outputDirectory>${pom.artifactId}-${pom.version}/modules/wso2esb/</outputDirectory>
             <includes>
-                <include>wso2*/files/**</include>
-                <include>wso2*/manifests/**</include>
-                <include>wso2*/templates/**</include>
-                <include>wso2*/metadata.json**</include>
+                <include>files/**</include>
+                <include>manifests/**</include>
+                <include>templates/**</include>
+                <include>metadata.json**</include>
             </includes>
             <excludes>
                 <exclude>**/*.zip</exclude>
