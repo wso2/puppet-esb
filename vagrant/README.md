@@ -40,7 +40,7 @@ Puppet will be used as the provisioning method in Vagrant and Hiera as the confi
 5. Download and copy WSO2 ESB distribution to Puppet module under `files` folder:
 
     ````
-    <PUPPET_HOME>/modules/wso2bps/files
+    <PUPPET_HOME>/modules/wso2esb/files
     ````
 
 5. Optionally update `<PUPPET_HOME>/hieradata` with required product configurations. `default` profile can be run on Vagrant without any changes to the Hiera data.

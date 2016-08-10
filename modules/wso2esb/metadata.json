@@ -4,7 +4,7 @@
   "author": "WSO2",
   "license": "Apache-2.0",
   "summary": "WSO2 Enterprise Service Bus Puppet module",
-  "source": "https://github.com/wso2/puppet-modules/tree/master/wso2esb",
+  "source": "https://github.com/wso2/puppet-esb.git",
   "project_page": "http://wso2.com/products/enterprise-service-bus/",
   "operatingsystem_support": [
     {
