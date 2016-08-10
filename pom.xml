@@ -22,7 +22,8 @@
     <artifactId>wso2esb-puppet-module</artifactId>
     <packaging>pom</packaging>
     <version>2.1.1-SNAPSHOT</version>
-    <name>WSO2 Enterprise Service Bus Puppet Module</name>
+    <name>WSO2 ESB Puppet Module</name>
+    <description>WSO2 Enterprise Service Bus Puppet Module</description>
 
     <licenses>
         <license>
@@ -175,6 +176,7 @@
 
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <validation.script.dir>${project.basedir}</validation.script.dir>
     </properties>
 </project>

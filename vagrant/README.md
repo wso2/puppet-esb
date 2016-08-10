@@ -12,7 +12,7 @@ Puppet will be used as the provisioning method in Vagrant and Hiera as the confi
 
 ## How to Use
 
-1. Clone WSO2 Puppet modules Git repository and consider this path as `PUPPET_HOME`:
+1. Clone WSO2 ESB Puppet modules git repository and consider this path as `PUPPET_HOME`:
 
     ````
     git clone https://github.com/wso2/puppet-esb.git
@@ -24,21 +24,26 @@ Puppet will be used as the provisioning method in Vagrant and Hiera as the confi
 
     Additionally, you can copy a sample `config.yaml` file from the `samples` folder to quickly run a particular product on Vagrant.
 
-3. Download and copy Oracle JDK `1.7_80` distribution to the following path:
+3. Initialize and update `wso2base` submodule using following commands:
+
+    ````
+    git submodule init
+    git submodule update
+    ````
+   
+4. Download and copy Oracle JDK `1.7_80` distribution to the following path:
 
     ````
     <PUPPET_HOME>/modules/wso2base/files/jdk-7u80-linux-x64.tar.gz
     ````
 
-4. Download and copy required WSO2 product distributions to each Puppet module under `files` folder:
+5. Download and copy WSO2 ESB distribution to Puppet module under `files` folder:
 
     ````
-    <PUPPET_HOME>/modules/wso2esb/files
-    <PUPPET_HOME>/modules/wso2am/files
-    <PUPPET_HOME>/modules/wso2as/files
+    <PUPPET_HOME>/modules/wso2bps/files
     ````
 
-5. Optionally update `<PUPPET_HOME>/hieradata` with required product configurations. `default` profile every product can be run on Vagrant without any changes to the Hiera data.
+5. Optionally update `<PUPPET_HOME>/hieradata` with required product configurations. `default` profile can be run on Vagrant without any changes to the Hiera data.
 
 7. Execute the following command to start the VMs:
 
@@ -46,4 +51,4 @@ Puppet will be used as the provisioning method in Vagrant and Hiera as the confi
     vagrant up
     ````
 
-For more information refer the [wiki](https://github.com/wso2/puppet-modules/wiki) page.
+For more information refer the [wiki](https://github.com/wso2/puppet-base/wiki) page.
