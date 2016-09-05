@@ -26,9 +26,7 @@ class wso2esb::params {
   else
   {
     $base_template_list = $wso2base::params::template_list
-    $esb_template_list          = [
-      'repository/conf/identity.xml',
-    ]
+    $esb_template_list          = []
 
     $template_list = concat($base_template_list,$esb_template_list)
 
