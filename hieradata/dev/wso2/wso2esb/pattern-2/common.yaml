@@ -19,12 +19,12 @@ classes:
 wso2::service_name: wso2esb
 wso2::hostname: esb.dev.wso2.org
 wso2::mgt_hostname: esb.dev.wso2.org
-wso2::platform_version: 4.2.0
+wso2::platform_version: 4.4.0
 
 #wso2::patch_list:
 #  - patch0001
 
-wso2::template_list:
+#wso2::template_list:
 #  - repository/conf/security/cipher-text.properties
 #  - repository/conf/security/cipher-tool.properties
 #  - bin/ciphertool.sh

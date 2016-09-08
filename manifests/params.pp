@@ -23,7 +23,7 @@ class wso2esb::params {
 
   # use_hieradata facter flags whether parameter lookup should be done via Hiera
   if $::use_hieradata == "true" {
-    $esb_wsdl_epr_prefix      = hiera('wso2::esb_wsdl_epr_prefix')
+    $esb_wsdl_epr_prefix      = hiera('wso2::esb_wsdl_epr_prefix',undef)
     $java_prefs_system_root   = hiera('java_prefs_system_root')
     $java_prefs_user_root     = hiera('java_prefs_user_root')
     $java_home                = hiera('java_home')
