@@ -18,7 +18,6 @@ classes:
 wso2::service_name: wso2esb
 wso2::hostname: esb.dev.wso2.org
 wso2::mgt_hostname: esb.dev.wso2.org
-wso2::platform_version: 4.4.0
 ## Uncomment the following for a clustered setup
 #wso2::file_list:
 #  - "repository/components/lib/%{hiera('wso2::datasources::mysql::connector_jar')}"

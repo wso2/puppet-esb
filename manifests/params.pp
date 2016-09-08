@@ -24,8 +24,6 @@ class wso2esb::params {
   # use_hieradata facter flags whether parameter lookup should be done via Hiera
   if $::use_hieradata == "true" {
     $esb_wsdl_epr_prefix      = hiera('wso2::esb_wsdl_epr_prefix')
-    $platform_version         = hiera('wso2::platform_version')
-
     $java_prefs_system_root   = hiera('java_prefs_system_root')
     $java_prefs_user_root     = hiera('java_prefs_user_root')
     $java_home                = hiera('java_home')
@@ -230,7 +228,7 @@ class wso2esb::params {
       }
     }
   }
-  
+
   $product_name               = 'wso2esb'
   $product_version            = '4.9.0'
   $platform_version           = '4.4.0'
