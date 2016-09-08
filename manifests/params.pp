@@ -230,10 +230,10 @@ class wso2esb::params {
       }
     }
   }
-  $patch_list                 = undef
+  
   $product_name               = 'wso2esb'
   $product_version            = '4.9.0'
-  $platform_version           = '4.2.0'
+  $platform_version           = '4.4.0'
   $carbon_home                = "${install_dir}/${product_name}-${product_version}"
   $pack_file_abs_path         = "${pack_dir}/${pack_filename}"
 }
