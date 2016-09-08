@@ -102,7 +102,6 @@ class wso2esb::params {
     ]
 
     $template_list        = [
-      'repository/conf/identity.xml',
       'repository/conf/carbon.xml',
       'repository/conf/user-mgt.xml',
       'repository/conf/registry.xml',
@@ -231,7 +230,7 @@ class wso2esb::params {
       }
     }
   }
-
+  $patch_list                 = undef
   $product_name               = 'wso2esb'
   $product_version            = '4.9.0'
   $platform_version           = '4.2.0'
