@@ -23,7 +23,7 @@ class wso2esb::params {
 
   # use_hieradata facter flags whether parameter lookup should be done via Hiera
   if $::use_hieradata == "true" {
-    $esb_wsdl_epr_prefix      = hiera('wso2::esb_wsdl_epr_prefix',undef)
+    $esb_wsdl_epr_prefix      = hiera('wso2::esb_wsdl_epr_prefix', undef)
     $java_prefs_system_root   = hiera('java_prefs_system_root')
     $java_prefs_user_root     = hiera('java_prefs_user_root')
     $java_home                = hiera('java_home')
@@ -39,7 +39,7 @@ class wso2esb::params {
     $hosts_mapping            = hiera_hash('wso2::hosts_mapping')
 
     $master_datasources       = hiera_hash('wso2::master_datasources')
-    $registry_mounts          = hiera_hash('wso2::registry_mounts')
+    $registry_mounts          = hiera_hash('wso2::registry_mounts', undef)
     $carbon_home_symlink      = hiera('wso2::carbon_home_symlink')
     $wso2_user                = hiera('wso2::user')
     $wso2_group               = hiera('wso2::group')
