@@ -22,7 +22,7 @@
     <groupId>org.wso2.puppet</groupId>
     <artifactId>wso2esb-puppet-module</artifactId>
     <packaging>pom</packaging>
-    <version>4.9.0-SNAPSHOT</version>
+    <version>5.0.0-SNAPSHOT</version>
     <name>WSO2 Enterprise Service Bus Puppet Module</name>
 
     <licenses>

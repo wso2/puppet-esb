@@ -11,18 +11,16 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 ---
 classes:
   - wso2esb
 
 wso2::service_name: wso2esb
-wso2::hostname: esb.dev.wso2.org
-wso2::mgt_hostname: esb.dev.wso2.org
-wso2::platform_version: 4.4.0
+wso2::hostname: "%{::fqdn}"
+wso2::mgt_hostname: "%{::fqdn}"
 
-#wso2::patch_list:
-#  - patch0001
+wso2::file_list:
+  - "repository/components/lib/%{hiera('wso2::datasources::mysql::connector_jar')}"
 
 #wso2::template_list:
 #  - repository/conf/security/cipher-text.properties
@@ -30,18 +28,16 @@ wso2::platform_version: 4.4.0
 #  - bin/ciphertool.sh
 #  - password-tmp
 
-#wso2::ports:
-#  proxyPort:
-#    http: 80
-#    https: 443
+# Defines WSDL EPR Prefix
+wso2::esb_wsdl_epr_prefix:
+  http:
+    bind_address: "%{hiera('wso2::hostname')}"
+    prefix: "http://%{hiera('wso2::hostname')}:9763"
+  https:
+    bind_address: "%{hiera('wso2::hostname')}"
+    prefix: "https://%{hiera('wso2::hostname')}::9443"
 
-wso2::file_list:
-  - "repository/components/lib/%{hiera('wso2::datasources::mysql::connector_jar')}"
-
-# Data sources
-wso2::is_datasource: wso2_carbon_db
-
-wso2::usermgt_datasource: wso2user_db
+wso2::usermgt_datasource: wso2_user_db
 
 wso2::master_datasources:
   wso2_config_db:
@@ -70,11 +66,11 @@ wso2::master_datasources:
     max_active: "%{hiera('wso2::datasources::common::max_active')}"
     max_wait: "%{hiera('wso2::datasources::common::max_wait')}"
     test_on_borrow: "%{hiera('wso2::datasources::common::test_on_borrow')}"
-    default_auto_commit: "%{hiera('wso2::datasources::common::default_auto_commit')}"
     validation_query: "%{hiera('wso2::datasources::mysql::validation_query')}"
+    default_auto_commit: "%{hiera('wso2::datasources::common::default_auto_commit')}"
     validation_interval: "%{hiera('wso2::datasources::common::validation_interval')}"
 
-  wso2user_db:
+  wso2_user_db:
     name: WSO2_USER_DB
     description: The datasource is used for user mangement and userstore
     driver_class_name: "%{hiera('wso2::datasources::mysql::driver_class_name')}"
@@ -88,22 +84,6 @@ wso2::master_datasources:
     default_auto_commit: "%{hiera('wso2::datasources::common::default_auto_commit')}"
     validation_query: "%{hiera('wso2::datasources::mysql::validation_query')}"
     validation_interval: "%{hiera('wso2::datasources::common::validation_interval')}"
-
-# Registry mounts
-wso2::registry_mounts:
-  wso2_config_db:
-    path: /_system/config
-    target_path: /_system/config/as
-    read_only: false
-    registry_root: /
-    enable_cache: true
-
-  wso2_gov_db:
-    path: /_system/governance
-    target_path: /_system/governance
-    read_only: false
-    registry_root: /
-    enable_cache: true
 
 # Secure vault configuration
 #wso2::enable_secure_vault: true
@@ -148,51 +128,10 @@ wso2::registry_mounts:
 #    secret_alias_value: repository/conf/datasources/master-datasources.xml//datasources-configuration/datasources/datasource[name='WSO2_GOV_DB']/definition[@type='RDBMS']/configuration/password,false
 #    password: "%{hiera('wso2::datasources::mysql::password')}"
 #
-#  wso2user_db_password:
-#    secret_alias: Datasources.WSO2USER_DB.Configuration.Password
-#    secret_alias_value: repository/conf/datasources/master-datasources.xml//datasources-configuration/datasources/datasource[name='WSO2USER_DB']/definition[@type='RDBMS']/configuration/password,false
+#  wso2_user_db_password:
+#    secret_alias: Datasources.WSO2_USER_DB.Configuration.Password
+#    secret_alias_value: repository/conf/datasources/master-datasources.xml//datasources-configuration/datasources/datasource[name='WSO2_USER_DB']/definition[@type='RDBMS']/configuration/password,false
 #    password: "%{hiera('wso2::datasources::mysql::password')}"
-#
-#  user_trusted_RPStore_password:
-#    secret_alias: Security.UserTrustedRPStore.Password
-#    secret_alias_value: repository/conf/identity.xml//Server/Security/UserTrustedRPStore/Password,false
-#    password: "%{hiera('wso2::key_stores::user_trusted_rp_store::password')}"
-#
-#  user_trusted_RPStore_key_password:
-#    secret_alias: Security.UserTrustedRPStore.KeyPassword
-#    secret_alias_value: repository/conf/identity.xml//Server/Security/UserTrustedRPStore/KeyPassword,false
-#    password: "%{hiera('wso2::key_stores::user_trusted_rp_store::key_password')}"
-#
-#  xmpp_password:
-#    secret_alias: MultifactorAuthentication.XMPPSettings.XMPPConfig.XMPPPassword
-#    secret_alias_value: repository/conf/identity.xml//MultifactorAuthentication/XMPPSettings/XMPPConfig/XMPPPassword,false
-#    password: wso2carbon
-#
-#  dep_sync_svn_password:
-#    secret_alias: Carbon.DeploymentSynchronizer.SvnPassword
-#    secret_alias_value: repository/conf/carbon.xml//Server/DeploymentSynchronizer/SvnPassword,true
-#    password: password
-#
-#  thrift_based_entitlement_config_key_store_password:
-#    secret_alias: EntitlementSettings.ThirftBasedEntitlementConfig.KeyStore.Password
-#    secret_alias_value: repository/conf/identity.xml//Server/EntitlementSettings/ThirftBasedEntitlementConfig/KeyStore/Password,false
-#    password: "%{hiera('wso2::key_stores::key_store::password')}"
-
-##Use below advanced secure vault configurations if the properties are used in corresponding files
-#  user_store_manager_connection_password:
-#    secret_alias: UserStoreManager.Property.ConnectionPassword
-#    secret_alias_value: repository/conf/user-mgt.xml//UserManager/Realm/UserStoreManager/Property[@name='ConnectionPassword'],flase
-#    password: admin
-#
-#  user_store_manager_password:
-#    secret_alias: UserStoreManager.Property.password
-#    secret_alias_value: repository/conf/user-mgt.xml//UserManager/Realm/UserStoreManager/Property[@name='password'],false
-#    password: admin
-#
-#  identity_system_store_pass:
-#    secret_alias: Identity.System.StorePass
-#    secret_alias_value: repository/conf/identity.xml//Server/Identity/System/StorePass,false
-#    password: wso2carbon
 #
 #  axis2_https_listener_trust_store_password:
 #    secret_alias: Axis2.Https.Listener.TrustStore.Password
@@ -224,7 +163,7 @@ wso2::registry_mounts:
 #    secret_alias_value: repository/conf/axis2/axis2.xml//axisconfig/transportSender[@name='https']/parameter[@name='keystore']/KeyStore/KeyPassword,false
 #    password: "%{hiera('wso2::key_stores::key_store::key_password')}"
 #
-#  axis2_mailto_parameter_password:
-#    secret_alias: Axis2.Mailto.Parameter.Password
-#    secret_alias_value: repository/conf/axis2/axis2.xml//axisconfig/transportSender[@name='mailto']/parameter[@name='mail.smtp.password'],false
-#    password: wso2carbon
+#  dep_sync_svn_password:
+#    secret_alias: Carbon.DeploymentSynchronizer.SvnPassword
+#    secret_alias_value: repository/conf/carbon.xml//Server/DeploymentSynchronizer/SvnPassword,true
+#    password: password

@@ -16,8 +16,9 @@ classes:
   - wso2esb
 
 wso2::service_name: wso2esb
-wso2::hostname: esb.dev.wso2.org
-wso2::mgt_hostname: esb.dev.wso2.org
+wso2::hostname: "%{::fqdn}"
+wso2::mgt_hostname: "%{::fqdn}"
+
 ## Uncomment the following for a clustered setup
 #wso2::file_list:
 #  - "repository/components/lib/%{hiera('wso2::datasources::mysql::connector_jar')}"
@@ -31,11 +32,11 @@ wso2::mgt_hostname: esb.dev.wso2.org
 # Defines WSDL EPR Prefix
 wso2::esb_wsdl_epr_prefix:
   http:
-    bind_address: esb.dev.wso2.org
-    prefix: http://esb.dev.wso2.org:9763
+    bind_address: "%{hiera('wso2::hostname')}"
+    prefix: "http://%{hiera('wso2::hostname')}:9763"
   https:
-    bind_address: esb.dev.wso2.org
-    prefix: https://esb.dev.wso2.org:9443
+    bind_address: "%{hiera('wso2::hostname')}"
+    prefix: "https://%{hiera('wso2::hostname')}::9443"
 
 ## Uncomment the following for a clustered setup
 #wso2::usermgt_datasource: wso2_user_db
