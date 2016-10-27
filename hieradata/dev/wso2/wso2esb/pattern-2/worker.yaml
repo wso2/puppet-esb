@@ -39,6 +39,15 @@ wso2::clustering:
 #     tag_key: tag-key
 #     tag_value: tag-value
 
+# Defines WSDL EPR Prefix
+wso2::esb_wsdl_epr_prefix:
+  http:
+    bind_address: esb.dev.wso2.org
+    prefix: http://esb.dev.wso2.org:9763
+  https:
+    bind_address: esb.dev.wso2.org
+    prefix: https://esb.dev.wso2.org:9443
+
 wso2::registry_mounts:
   wso2_config_db:
     path: /_system/config/esb
