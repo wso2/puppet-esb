@@ -32,10 +32,10 @@ wso2::mgt_hostname: esb.dev.wso2.org
 wso2::esb_wsdl_epr_prefix:
   http:
     bind_address: esb.dev.wso2.org
-    prefix: http://esb.dev.wso2.org:9763
+    prefix: http://esb.dev.wso2.org:8280
   https:
     bind_address: esb.dev.wso2.org
-    prefix: https://esb.dev.wso2.org:9443
+    prefix: https://esb.dev.wso2.org:8243
 
 ## Uncomment the following for a clustered setup
 #wso2::usermgt_datasource: wso2_user_db
