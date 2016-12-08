@@ -33,10 +33,10 @@ wso2::mgt_hostname: "%{::fqdn}"
 wso2::esb_wsdl_epr_prefix:
   http:
     bind_address: "%{hiera('wso2::hostname')}"
-    prefix: "http://%{hiera('wso2::hostname')}:9763"
+    prefix: "http://%{hiera('wso2::hostname')}:8280"
   https:
     bind_address: "%{hiera('wso2::hostname')}"
-    prefix: "https://%{hiera('wso2::hostname')}::9443"
+    prefix: "https://%{hiera('wso2::hostname')}::8243"
 
 ## Uncomment the following for a clustered setup
 #wso2::usermgt_datasource: wso2_user_db
