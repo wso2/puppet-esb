@@ -43,10 +43,10 @@ wso2::clustering:
 wso2::esb_wsdl_epr_prefix:
   http:
     bind_address: esb.dev.wso2.org
-    prefix: http://esb.dev.wso2.org:9763
+    prefix: http://esb.dev.wso2.org:8280
   https:
     bind_address: esb.dev.wso2.org
-    prefix: https://esb.dev.wso2.org:9443
+    prefix: https://esb.dev.wso2.org:8243
 
 wso2::registry_mounts:
   wso2_config_db:
